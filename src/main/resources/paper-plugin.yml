@@ -1,0 +1,7 @@
+name: Bifrost
+version: '${version}'
+main: me.moros.loki.Bifrost
+bootstrapper: me.moros.loki.Bootstrap
+author: Moros
+description: Bridge connecting to Loki
+api-version: '${mcVersion}'
