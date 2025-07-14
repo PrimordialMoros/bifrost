@@ -21,5 +21,9 @@ package me.moros.loki.pipeline;
 
 @FunctionalInterface
 public interface Processor<Context> {
+  String METADATA_NAME = "name";
+  String METADATA_UUID = "uuid";
+  String METADATA_WORLD = "world";
+
   Record process(Record logRecord, Context context);
 }

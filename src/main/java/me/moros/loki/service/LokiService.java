@@ -31,9 +31,11 @@ public sealed interface LokiService extends Keyed, Closeable permits LokiService
   String LABEL_NAME_TYPE = "type";
   String LABEL_VALUE_CHAT = "chat";
   String LABEL_VALUE_COMMAND = "command";
+  String LABEL_VALUE_JOIN_EVENT = "join-event";
 
   Key CHAT_KEY = Key.key(LokiServiceImpl.LABEL_NAME_TYPE, LokiServiceImpl.LABEL_VALUE_CHAT);
   Key COMMAND_KEY = Key.key(LokiServiceImpl.LABEL_NAME_TYPE, LokiServiceImpl.LABEL_VALUE_COMMAND);
+  Key JOIN_EVENT_KEY = Key.key(LokiServiceImpl.LABEL_NAME_TYPE, LokiServiceImpl.LABEL_VALUE_JOIN_EVENT);
 
   void send(Record logRecord);
 

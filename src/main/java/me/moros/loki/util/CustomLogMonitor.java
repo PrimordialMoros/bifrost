@@ -31,6 +31,15 @@ public record CustomLogMonitor(Logger logger) implements ILogMonitor {
   }
 
   @Override
+  public boolean isVerbose() {
+    return false;
+  }
+
+  @Override
+  public void logVerbose(String s) {
+  }
+
+  @Override
   public void logInfo(final String what) {
   }
 

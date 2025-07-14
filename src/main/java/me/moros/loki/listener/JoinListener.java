@@ -17,31 +17,22 @@
  * along with Bifrost. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package me.moros.loki.platform;
+package me.moros.loki.listener;
 
-import java.util.Map;
+import java.util.function.Consumer;
 
-import me.moros.loki.pipeline.Processor;
 import me.moros.loki.pipeline.Record;
+import me.moros.loki.platform.PlayerProcessor;
 import org.bukkit.entity.Player;
-import pl.mjaron.tinyloki.Labels;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
-import static java.util.Map.entry;
-
-public interface PlayerProcessor extends Processor<Player> {
-  private static Map<String, String> createStructuredMetadata(Player player) {
-    return Map.ofEntries(
-      entry(METADATA_NAME, player.getName()),
-      entry(METADATA_UUID, player.getUniqueId().toString()),
-      entry(METADATA_WORLD, player.getWorld().key().asString()),
-      entry(Labels.LEVEL, Labels.INFO)
-    );
-  }
-
-  @Override
-  default Record process(Record logRecord, Player context) {
-    Map<String, String> metadata = createStructuredMetadata(context);
-    logRecord.metadata().putAll(metadata);
-    return logRecord;
+public record JoinListener(Consumer<Record> consumer) implements PlayerProcessor, Listener {
+  @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+  private void onChat(PlayerJoinEvent event) {
+    Player player = event.getPlayer();
+    consumer.accept(process(Record.create(player.getAddress().getAddress().toString()), player));
   }
 }

@@ -1,9 +1,9 @@
 [versions]
-minecraft = "1.21.4"
-paper-api = "1.21.4-R0.1-SNAPSHOT"
-tinyloki = "1.1.6"
-shadow = "8.3.6"
-userdev = "2.0.0-beta.16"
+minecraft = "1.21.7"
+paper-api = "1.21.7-R0.1-SNAPSHOT"
+tinyloki = "1.1.8"
+shadow = "8.3.8"
+userdev = "2.0.0-beta.18"
 
 [libraries]
 tinyloki = { module = "io.github.mjfryc:mjaron-tinyloki-java", version.ref = "tinyloki" }
