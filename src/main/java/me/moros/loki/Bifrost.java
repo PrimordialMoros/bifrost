@@ -31,6 +31,7 @@ import me.moros.loki.config.ConfigManager;
 import me.moros.loki.config.LokiSettings;
 import me.moros.loki.listener.ChatListener;
 import me.moros.loki.listener.CommandListener;
+import me.moros.loki.listener.JoinListener;
 import me.moros.loki.pipeline.Record;
 import me.moros.loki.service.LokiService;
 import net.kyori.adventure.key.Key;
@@ -68,6 +69,7 @@ public class Bifrost extends JavaPlugin {
     logger.info(output);
     getServer().getPluginManager().registerEvents(new ChatListener(multiSend(LokiService.CHAT_KEY)), this);
     getServer().getPluginManager().registerEvents(new CommandListener(multiSend(LokiService.COMMAND_KEY)), this);
+    getServer().getPluginManager().registerEvents(new JoinListener(multiSend(LokiService.JOIN_EVENT_KEY)), this);
   }
 
   private Consumer<Record> multiSend(Key key) {
