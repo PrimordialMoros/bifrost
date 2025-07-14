@@ -31,8 +31,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public record JoinListener(Consumer<Record> consumer) implements PlayerProcessor, Listener {
   @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-  private void onChat(PlayerJoinEvent event) {
+  private void onJoin(PlayerJoinEvent event) {
     Player player = event.getPlayer();
-    consumer.accept(process(Record.create(player.getAddress().getAddress().toString()), player));
+    consumer.accept(process(Record.create(player.getAddress().getAddress().getHostAddress()), player));
   }
 }

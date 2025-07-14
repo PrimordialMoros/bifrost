@@ -32,7 +32,8 @@ record LokiServiceImpl(Key key, TinyLoki loki, Map<Key, ILogStream> streams) imp
   LokiServiceImpl(Key key, TinyLoki tinyLoki) {
     this(key, tinyLoki, Map.ofEntries(
       streamEntry(CHAT_KEY, tinyLoki),
-      streamEntry(COMMAND_KEY, tinyLoki)
+      streamEntry(COMMAND_KEY, tinyLoki),
+      streamEntry(JOIN_KEY, tinyLoki)
     ));
   }
 

@@ -69,7 +69,7 @@ public class Bifrost extends JavaPlugin {
     logger.info(output);
     getServer().getPluginManager().registerEvents(new ChatListener(multiSend(LokiService.CHAT_KEY)), this);
     getServer().getPluginManager().registerEvents(new CommandListener(multiSend(LokiService.COMMAND_KEY)), this);
-    getServer().getPluginManager().registerEvents(new JoinListener(multiSend(LokiService.JOIN_EVENT_KEY)), this);
+    getServer().getPluginManager().registerEvents(new JoinListener(multiSend(LokiService.JOIN_KEY)), this);
   }
 
   private Consumer<Record> multiSend(Key key) {
